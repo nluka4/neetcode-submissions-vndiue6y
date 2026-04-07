@@ -1,0 +1,79 @@
+Hoćeš da imaš mesta za ukupno 4 elementa:
+
+i
+j
+l
+r
+
+Pošto važi:
+
+j = i + 1
+l = j + 1
+r = nums.size() - 1
+
+i ne sme da ode previše desno, jer onda više ne bi ostalo dovoljno elemenata iza njega za još tri pozicije.
+
+Zato ide:
+
+i < nums.size() - 3
+
+jer poslednja dozvoljena pozicija za i je ona posle koje postoje još bar 3 elementa.
+
+Na isti fazon:
+
+j < nums.size() - 2
+
+jer iza j moraju da ostanu još bar 2 elementa:
+
+jedan za l
+jedan za r
+
+A while (l < r) znači:
+
+l i r popunjavaju poslednja 2 mesta
+moraju biti različiti indeksi
+zato l mora biti strogo levo od r
+
+Najlakše na primeru n = 6:
+
+indeksi su:
+
+0 1 2 3 4 5
+za i
+
+i < 6 - 3
+znači:
+
+i < 3
+
+pa i može biti:
+
+0, 1, 2
+
+Ako bi i = 3, iza njega su samo 4 i 5, a ti trebaš još 3 elementa, tako da ne može.
+
+za j
+
+ako je recimo i = 0, onda j kreće od 1.
+
+Uslov:
+
+j < 6 - 2
+j < 4
+
+pa j može biti:
+
+1, 2, 3
+
+Ako bi j = 4, ostao bi samo još 5, a trebaju ti i l i r, dakle 2 mesta.
+
+Tako da da, tvoja logika je ispravna:
+
+i ide do size - 3 jer posle njega moraju stati još 3 broja
+j ide do size - 2 jer posle njega moraju stati još 2 broja
+l kreće od j + 1
+r kreće od kraja
+
+Samo jedna sitnica: praktično nije zbog toga što je r “na kraju”, nego zbog toga što ukupno moraju da postoje 4 različita indeksa.
+
+Ako hoćeš, mogu i da ti nacrtam tačno zašto je baš -3, -2, a ne -4 ili -1
